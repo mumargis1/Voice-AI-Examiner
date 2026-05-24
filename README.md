@@ -1,12 +1,3 @@
-I completely understand. Let's make this as easy as possible so you don't have to worry about any formatting errors.
-
-Below is the **exact, complete, and fully corrected text** for your `README.md` file. I have fixed the GitHub link inside the code block and included every single section from top to bottom.
-
-### Step 1: Copy this entire block
-
-Click the "Copy" button in the top right corner of the box below, open your `README.md` file on your computer, delete everything currently in it, and paste this exactly as it is:
-
-```markdown
 # 🎙️ Local Voice-to-Voice AI Examiner (Zero-Latency, Cross-OS)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
