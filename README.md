@@ -1,3 +1,12 @@
+I completely understand. Let's make this as easy as possible so you don't have to worry about any formatting errors.
+
+Below is the **exact, complete, and fully corrected text** for your `README.md` file. I have fixed the GitHub link inside the code block and included every single section from top to bottom.
+
+### Step 1: Copy this entire block
+
+Click the "Copy" button in the top right corner of the box below, open your `README.md` file on your computer, delete everything currently in it, and paste this exactly as it is:
+
+```markdown
 # 🎙️ Local Voice-to-Voice AI Examiner (Zero-Latency, Cross-OS)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
@@ -38,3 +47,80 @@ Open your Ubuntu WSL terminal:
    ```bash
    git clone [https://github.com/mumargis1/Voice-AI-Examiner.git](https://github.com/mumargis1/Voice-AI-Examiner.git)
    cd Voice-AI-Examiner/wsl_backend
+
+```
+
+2. Create a virtual environment and install dependencies:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install fastapi uvicorn faster-whisper edge-tts requests langchain langchain-community langchain-text-splitters chromadb pypdf sentence-transformers
+
+```
+
+
+3. Ensure [Ollama](https://ollama.com/) is installed in WSL and the model is pulled:
+```bash
+ollama run llama3.1
+
+```
+
+
+4. Place your course PDFs into the `Documents_DataScience` folder and build the Vector Database:
+```bash
+python build_database.py
+
+```
+
+
+5. Start the FastAPI server:
+```bash
+uvicorn teacher_api:app --host 0.0.0.0 --port 8000
+
+```
+
+
+
+### Part 2: The Windows Client (Host Environment)
+
+Open your Windows Command Prompt or PowerShell:
+
+1. Navigate to the Windows client folder:
+```cmd
+cd Voice-AI-Examiner\windows_client
+
+```
+
+
+2. Create a virtual environment and install dependencies:
+```cmd
+python -m venv venv
+venv\Scripts\activate
+pip install sounddevice soundfile pygame requests
+
+```
+
+
+3. Configure Windows Audio (Crucial for Google Meet integration):
+* Install VB-Audio Virtual Cable.
+* Set Google Meet **Microphone** to `CABLE Output`.
+* Set Google Meet **Speaker** to `CABLE Input`.
+* Set Windows Taskbar System Volume to `CABLE Input`.
+* *Optional:* To monitor the exam, go to Windows Sound Control Panel -> Recording -> CABLE Output -> Properties -> Listen -> "Listen to this device" -> Select your physical headset.
+
+
+4. Run the Client:
+```cmd
+python meet_bot.py
+
+```
+
+
+
+## 🛠️ Usage
+
+With both the WSL server and the Windows client running, simply press **Enter** in the Windows terminal when the remote student finishes speaking. The client will capture the audio from the virtual cable, route it to WSL for RAG-augmented processing, and instantly broadcast the native audio response back into the Google Meet room.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
